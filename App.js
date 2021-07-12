@@ -8,6 +8,7 @@ const App: () => Node = () => {
     <SafeAreaView>
       <Home />
     </SafeAreaView>
+
   );
 };
 
