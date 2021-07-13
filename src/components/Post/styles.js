@@ -18,10 +18,19 @@ const styles = StyleSheet.create({
   },
   like: {
     alignSelf: 'flex-end',
+    position: 'absolute',
+    right: 20,
+    bottom: 50,
+  },
+  likeCounter: {
+    fontSize: 14,
+    fontWeight: '400',
+    color: '#fff',
+    paddingTop: 5,
   },
   name: {
-    paddingLeft: 10,
-    marginBottom: 50,
+    paddingLeft: 20,
+    marginBottom: 70,
   },
   userName: {
     color: '#fff',
