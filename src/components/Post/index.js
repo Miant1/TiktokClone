@@ -43,7 +43,7 @@ const Post = (props) => {
             onError={e => console.log(e)}
             style={styles.video}
             repeat={true}
-            paused={pause}
+            paused={true}
           />
 
           <View style={styles.UIContainer}>
