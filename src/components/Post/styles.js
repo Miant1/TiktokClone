@@ -5,6 +5,14 @@ const styles = StyleSheet.create({
     width: '100%',
     height: Dimensions.get('window').height - 47,
   },
+  pausePlayBtn: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    bottom: 0,
+    right: 0,
+    zIndex: 1,
+  },
   video: {
     position: 'absolute',
     top: 0,
@@ -15,22 +23,31 @@ const styles = StyleSheet.create({
   UIContainer: {
     height: '100%',
     justifyContent: 'flex-end',
+    zIndex: 2,
   },
   like: {
     alignSelf: 'flex-end',
     position: 'absolute',
     right: 20,
-    bottom: 50,
+    bottom: 70,
   },
   likeCounter: {
     fontSize: 14,
     fontWeight: '400',
     color: '#fff',
     paddingTop: 5,
+    textAlign: 'center'
   },
-  name: {
+  info: {
+    width: '80%',
     paddingLeft: 20,
-    marginBottom: 70,
+    marginBottom: 90,
+  },
+  desc: {
+    fontSize: 18,
+    fontWeight: '400',
+    color: '#fff',
+    marginBottom: 20,
   },
   userName: {
     color: '#fff',

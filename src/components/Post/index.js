@@ -1,23 +1,43 @@
-import React, { useState } from "react";
-import { Text, TouchableWithoutFeedback, View } from "react-native";
+import React, {useState} from 'react';
+import {
+  Text,
+  TouchableOpacity,
+  TouchableWithoutFeedback,
+  View,
+} from 'react-native';
 import Video from 'react-native-video';
 import styles from './styles';
-import AntDesign from "react-native-vector-icons/AntDesign";
+import AntDesign from 'react-native-vector-icons/AntDesign';
 
-const Post = () => {
+const Post = (props) => {
+  const [posts, setPosts] = useState(props.posts);
   const [pause, setPause] = useState(false);
+  const [isLiked, setIsLiked] = useState(false);
+
+  console.log(posts);
 
   const onPlayPausePress = () => {
     setPause(!pause);
   };
 
+  const onLikePress = () => {
+    const likesToAdd = isLiked ? -1 : 1;
+    setPosts({
+      ...posts,
+      likes: posts.likes + likesToAdd,
+    });
+    setIsLiked(!isLiked);
+  };
+  console.log(posts.videoPath);
   return (
     <View style={styles.container}>
-      <TouchableWithoutFeedback onPress={onPlayPausePress}>
+      <TouchableWithoutFeedback
+        style={styles.pausePlayBtn}
+        onPress={onPlayPausePress}>
         <View>
           <Video
             source={{
-              uri: 'https://d8vywknz0hvjw.cloudfront.net/fitenium-media-prod/videos/45fee890-a74f-11ea-8725-311975ea9616/proccessed_720.mp4',
+              uri: posts.videoUri
             }}
             resizeMode="cover"
             onError={e => console.log(e)}
@@ -27,14 +47,16 @@ const Post = () => {
           />
 
           <View style={styles.UIContainer}>
-            <View style={styles.like}>
-              <AntDesign color={'#fff'} size={26} name={'heart'} />
-              <Text style={styles.likeCounter}>100</Text>
+            <TouchableOpacity style={styles.like} onPress={onLikePress}>
+              <AntDesign color={isLiked ? 'red' : '#fff'} size={26} name={'heart'} />
+              <Text style={styles.likeCounter}>{posts.likes}</Text>
+            </TouchableOpacity>
+
+            <View style={styles.info}>
+              <Text style={styles.desc}>{posts.desc}</Text>
+              <Text style={styles.userName}>@{posts.username}</Text>
             </View>
 
-            <View style={styles.name}>
-              <Text style={styles.userName}>@mikesoul</Text>
-            </View>
           </View>
         </View>
       </TouchableWithoutFeedback>

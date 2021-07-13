@@ -1,11 +1,19 @@
 import React from 'react';
-import {View} from 'react-native';
-import Post from "../../components/Post";
+import { Dimensions, FlatList, View } from "react-native";
+import PostsData from '../../PostsData/postsData';
+import Post from '../../components/Post';
 
 const Home = () => {
   return (
     <View>
-      <Post />
+      <FlatList
+        data={PostsData}
+        renderItem={({item}) => <Post posts={item} />}
+        showsVerticalScrollIndicator={false}
+        snapToInterval={Dimensions.get('window').height - 47}
+        snapToAlignment={'start'}
+        decelerationRate={'fast'}
+      />
     </View>
   );
 };
